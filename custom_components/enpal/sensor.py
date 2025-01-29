@@ -87,6 +87,24 @@ async def async_setup_entry(
                 addSensor('mdi:lightning-bolt', 'Enpal Ampere Phase C', 'current', 'A') # missing
             elif field == "Power.AC.Phase.C":
                 addSensor('mdi:lightning-bolt', 'Enpal Power Phase C', 'power', 'W')
+            elif field == "Power.DC.String.1":
+                addSensor('mdi:lightning-bolt', 'Enpal Power Strring 1', 'power', 'W')
+            elif field == "Power.DC.String.2":
+                addSensor('mdi:lightning-bolt', 'Enpal Power Strring 2', 'power', 'W')
+            elif field == "Power.DC.String.3":
+                addSensor('mdi:lightning-bolt', 'Enpal Power Strring 3', 'power', 'W')
+            elif field == "Current.String.1":
+                addSensor('mdi:lightning-bolt', 'Enpal Current Strring 1', 'current', 'A')
+            elif field == "Current.String.2":
+                addSensor('mdi:lightning-bolt', 'Enpal Current Strring 2', 'current', 'A')
+            elif field == "Current.String.3":
+                addSensor('mdi:lightning-bolt', 'Enpal Current Strring 3', 'current', 'A')
+            elif field == "Voltage.String.1":
+                addSensor('mdi:lightning-bolt', 'Enpal Current Strring 1', 'voltage', 'V')
+            elif field == "Voltage.String.2":
+                addSensor('mdi:lightning-bolt', 'Enpal Current Strring 2', 'voltage', 'V')
+            elif field == "Voltage.String.3":
+                addSensor('mdi:lightning-bolt', 'Enpal Current Strring 3', 'voltage', 'V')
 
             #Battery
             elif field == "Power.Battery.Charge.Discharge":
