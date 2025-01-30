@@ -67,34 +67,16 @@ async def async_setup_entry(
         if measurement == "inverter":
             if field == "Power.DC.Total":
                 addSensor('mdi:solar-power', 'Current Solar Production Power', 'power', 'W')
-            elif field == "Power.House.Total":
-                addSensor('mdi:home-lightning-bolt', 'Current Power House Total', 'power', 'W')
-            elif field == "Voltage.Phase.A":
-                addSensor('mdi:lightning-bolt', 'Solar AC Voltage Phase A', 'voltage', 'V')
-            elif field == "Current.Phase.A":
-                addSensor('mdi:lightning-bolt', 'Solar AC Ampere Phase A', 'current', 'A') # missing
-            elif field == "Power.AC.Phase.A":
-                addSensor('mdi:lightning-bolt', 'Solar AC Power Phase A', 'power', 'W')
-            elif field == "Voltage.Phase.B":
-                addSensor('mdi:lightning-bolt', 'Solar AC Voltage Phase B', 'voltage', 'V')
-            elif field == "Current.Phase.B":
-                addSensor('mdi:lightning-bolt', 'Solar AC Ampere Phase B', 'current', 'A') # missing
-            elif field == "Power.AC.Phase.B":
-                addSensor('mdi:lightning-bolt', 'Solar AC Power Phase B', 'power', 'W')
-            elif field == "Voltage.Phase.C":
-                addSensor('mdi:lightning-bolt', 'Solar AC Voltage Phase C', 'voltage', 'V')
-            elif field == "Current.Phase.C":
-                addSensor('mdi:lightning-bolt', 'Solar AC Ampere Phase C', 'current', 'A') # missing
-            elif field == "Power.AC.Phase.C":
-                addSensor('mdi:lightning-bolt', 'Solar AC Power Phase C', 'power', 'W')
+            elif field == "Power.Consumption.Total":
+                addSensor('mdi:home-lightning-bolt', 'Power Consumption Total', 'power', 'W')
+            elif field == "Power.Grid.Export":
+                addSensor('mdi:home-lightning-bolt', 'Power Grid Export', 'power', 'W')
             elif field == "Power.DC.String.1":
                 addSensor('mdi:lightning-bolt', 'Solar DC Power String 1', 'power', 'W')
             elif field == "Power.DC.String.2":
                 addSensor('mdi:lightning-bolt', 'Solar DC Power String 2', 'power', 'W')
             elif field == "Power.DC.String.3":
                 addSensor('mdi:lightning-bolt', 'Solar DC Power String 3', 'power', 'W')
-            elif field == "Power.DC.Total":
-                addSensor('mdi:lightning-bolt', 'Solar DC Power Total', 'power', 'W')
             elif field == "Current.String.1":
                 addSensor('mdi:lightning-bolt', 'Solar DC Current String 1', 'current', 'A')
             elif field == "Current.String.2":
@@ -127,50 +109,20 @@ async def async_setup_entry(
                 addSensor('mdi:temperature-celsius', 'Solar Battery Temerature', 'temperature', '°C')
             elif field == "Battery.SOH":
                 addSensor('mdi:bottle-tonic-plus', 'Solar Battery State of Health', 'percent', '%')
-
-            # PowerSensor
-            elif field == "Current.Phase.A":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Current Phase A', 'current', 'A')
-            elif field == "Current.Phase.B":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Current Phase B', 'current', 'A')
-            elif field == "Current.Phase.B":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Current Phase C', 'current', 'A')
-            elif field == "Voltage.Phase.A":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Voltage Phase A', 'voltage', 'V')
-            elif field == "Voltage.Phase.B":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Voltage Phase B', 'voltage', 'V')
-            elif field == "Voltage.Phase.C":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Voltage Phase C', 'voltage', 'V')
-            elif field == "Power.AC.Phase.A":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Power Phase A', 'power', 'W')
-            elif field == "Power.AC.Phase.B":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Power Phase B', 'power', 'W')
-            elif field == "Power.AC.Phase.C":
-                addSensor('mdi:home-lightning-bolt', 'PowerSensor Power Phase C', 'power', 'W')
             else:
                 _LOGGER.debug(f"Not adding measurement: {measurement} field: {field}")
 
         elif measurement == "system":
             if field == "Power.External.Total":
-                addSensor('mdi:home-lightning-bolt', 'Enpal Power External Total', 'power', 'W')
+                addSensor('mdi:home-lightning-bolt', 'Solar Power External Total', 'power', 'W')
             elif field == "Energy.Consumption.Total.Day":
-                addSensor('mdi:home-lightning-bolt', 'Enpal Energy Consumption', 'energy', 'kWh')
+                addSensor('mdi:home-lightning-bolt', 'Solar Energy Consumption', 'energy', 'kWh')
             elif field == "Energy.External.Total.Out.Day":
-                addSensor('mdi:transmission-tower-export', 'Enpal Energy External Out Day', 'energy', 'kWh')
+                addSensor('mdi:transmission-tower-export', 'Solar Energy External Out Day', 'energy', 'kWh')
             elif field == "Energy.External.Total.In.Day":
-                addSensor('mdi:transmission-tower-import', 'Enpal Energy External In Day', 'energy', 'kWh')
+                addSensor('mdi:transmission-tower-import', 'Solar Energy External In Day', 'energy', 'kWh')
             elif field == "Energy.Production.Total.Day":
-                addSensor('mdi:solar-power-variant', 'Enpal Production Day', 'energy', 'kWh')
-            else:
-                _LOGGER.debug(f"Not adding measurement: {measurement} field: {field}")
-
-        elif measurement == "wallbox":
-            if field == "State.Wallbox.Connector.1.Charge":
-                addSensor('mdi:ev-station', 'Wallbox Charge Percent', 'battery', '%')
-            elif field == "Power.Wallbox.Connector.1.Charging":
-                addSensor('mdi:ev-station', 'Wallbox Charging Power', 'power', 'W')
-            elif field == "Energy.Wallbox.Connector.1.Charged.Total":
-                addSensor('mdi:ev-station', 'Wallbox Charging Total', 'energy', 'Wh')
+                addSensor('mdi:solar-power-variant', 'Solar Production Day', 'energy', 'kWh')
             else:
                 _LOGGER.debug(f"Not adding measurement: {measurement} field: {field}")
 
