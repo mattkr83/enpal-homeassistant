@@ -18,7 +18,7 @@ from influxdb_client import InfluxDBClient
 _LOGGER = logging.getLogger(__name__)
 SCAN_INTERVAL = timedelta(seconds=20)
 
-VERSION= '0.4.2'
+VERSION= '0.4.4'
 
 def get_tables(ip: str, port: int, token: str):
     client = InfluxDBClient(url=f'http://{ip}:{port}', token=token, org='enpal')
@@ -120,15 +120,13 @@ async def async_setup_entry(
             elif field == "Energy.Battery.Discharge.Total.Unit.1":
                 addSensor('mdi:battery-arrow-down', 'Solar Battery Discharge Total', 'energy', 'kWh')
             elif field == "Voltage.Battery":
-                addSensor('mdi:lightning-bolt', 'Solar Battery Volatge', 'voltage', 'V')
+                addSensor('mdi:lightning-bolt', 'Solar Battery Voltage', 'voltage', 'V')
             elif field == "Temperature.Battery":
-                addSensor('mdi:temperature-celsius', 'Solar Battery Temerature', 'tempertaure', '°C')
+                addSensor('mdi:temperature-celsius', 'Solar Battery Temerature', 'temperature', '°C')
             elif field == "Battery.SOH":
                 addSensor('mdi:bottle-tonic-plus', 'Solar Battery State of Health', 'percent', '%')
-            else:
-                _LOGGER.debug(f"Not adding measurement: {measurement} field: {field}")
 
-        elif measurement == "powersensor":
+            # PowerSensor
             if field == "Current.Phase.A":
                 addSensor('mdi:home-lightning-bolt', 'PowerSensor Current Phase A', 'current', 'A')
             elif field == "Current.Phase.B":
@@ -147,6 +145,8 @@ async def async_setup_entry(
                 addSensor('mdi:home-lightning-bolt', 'PowerSensor Power Phase B', 'power', 'W')
             elif field == "Power.AC.Phase.C":
                 addSensor('mdi:home-lightning-bolt', 'PowerSensor Power Phase C', 'power', 'W')
+            else:
+                _LOGGER.debug(f"Not adding measurement: {measurement} field: {field}")
 
         elif measurement == "system":
             if field == "Power.External.Total":

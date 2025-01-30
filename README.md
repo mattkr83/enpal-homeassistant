@@ -3,10 +3,6 @@
 
 <img src="images/logo.png" alt="enpal logo" width="512">
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
-[![GitHub release](https://img.shields.io/github/release/gickowtf/enpal-homeassistant.svg)](https://github.com/gickowtf/enpal-homeassistant/releases)
-![](https://img.shields.io/badge/dynamic/json?color=41BDF5&logo=home-assistant&label=integration%20usage&suffix=%20installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.enpal.total)
-
 ## Disclaimer
 
 This integration is created with acknowledgement and limited support from Enpal GmbH, but __it's not official software from Enpal__.<br>
