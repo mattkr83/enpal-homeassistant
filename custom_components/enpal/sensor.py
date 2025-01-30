@@ -93,6 +93,8 @@ async def async_setup_entry(
                 addSensor('mdi:lightning-bolt', 'Solar DC Power String 2', 'power', 'W')
             elif field == "Power.DC.String.3":
                 addSensor('mdi:lightning-bolt', 'Solar DC Power String 3', 'power', 'W')
+            elif field == "Power.DC.Total":
+                addSensor('mdi:lightning-bolt', 'Solar DC Power Total', 'power', 'W')
             elif field == "Current.String.1":
                 addSensor('mdi:lightning-bolt', 'Solar DC Current String 1', 'current', 'A')
             elif field == "Current.String.2":
@@ -127,7 +129,7 @@ async def async_setup_entry(
                 addSensor('mdi:bottle-tonic-plus', 'Solar Battery State of Health', 'percent', '%')
 
             # PowerSensor
-            if field == "Current.Phase.A":
+            elif field == "Current.Phase.A":
                 addSensor('mdi:home-lightning-bolt', 'PowerSensor Current Phase A', 'current', 'A')
             elif field == "Current.Phase.B":
                 addSensor('mdi:home-lightning-bolt', 'PowerSensor Current Phase B', 'current', 'A')
