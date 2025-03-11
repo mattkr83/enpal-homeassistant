@@ -90,8 +90,8 @@ async def async_setup_entry(
             elif field == "Voltage.String.3":
                 addSensor('mdi:lightning-bolt', 'Solar DC Voltage String 3', 'voltage', 'V')
 
-            #Battery
-            elif field == "Power.Battery.Charge.Discharge":
+        if measurement == "battery":
+            if field == "Power.Battery.Charge.Discharge":
                 addSensor('mdi:battery-charging', 'Solar Battery Power', 'power', 'W')
             elif field == "Energy.Battery.Charge.Level":
                 addSensor('mdi:battery', 'Solar Battery Percent', 'battery', '%')
@@ -112,7 +112,7 @@ async def async_setup_entry(
             else:
                 _LOGGER.debug(f"Not adding measurement: {measurement} field: {field}")
 
-        elif measurement == "system":
+        if measurement == "system":
             if field == "Power.External.Total":
                 addSensor('mdi:home-lightning-bolt', 'Solar Power External Total', 'power', 'W')
             elif field == "Energy.Consumption.Total.Day":
